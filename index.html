@@ -18,6 +18,7 @@ a:link:not(:hover) {
 <h1>This is my webpage</h1>
 <p>There will be things on this webpage eventually.</p>
 
+
 <br>
 <h2>Normalized Bar Chart</h2>
 
@@ -31,6 +32,7 @@ new Runtime().module(define, name => {
 });
 </script>
 
+
 <br>
 <h2>Radial Area Chart</h2>
 
@@ -41,5 +43,19 @@ import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/run
 import define from "https://api.observablehq.com/d/7aa97d4feb3b9881.js?v=3";
 new Runtime().module(define, name => {
   if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-9526a5a0"));
+});
+</script>
+
+
+<br>
+<h2>Radial Bar Chart</h2>
+
+<div id="observablehq-chart-176c6761"></div>
+
+<script type="module">
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import define from "https://api.observablehq.com/d/c271f092d8d49403.js?v=3";
+new Runtime().module(define, name => {
+  if (name === "chart") return new Inspector(document.querySelector("#observablehq-chart-176c6761"));
 });
 </script>
