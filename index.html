@@ -18,6 +18,16 @@ a:link:not(:hover) {
 <h1>This is my webpage</h1>
 <p>There will be things on this webpage eventually.</p>
 
+<div id="observablehq-hbar-83c51c75"></div>
+
+<script type="module">
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import define from "https://api.observablehq.com/d/bc9ef870f0a0254c.js?v=3";
+new Runtime().module(define, name => {
+  if (name === "hbar") return new Inspector(document.querySelector("#observablehq-hbar-83c51c75"));
+});
+</script>
+
 <div id="observablehq-chart-9526a5a0"></div>
 
 <script type="module">
