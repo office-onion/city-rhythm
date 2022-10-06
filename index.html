@@ -19,7 +19,14 @@ a:link:not(:hover) {
 <p>This example demonstrates how to embed an <a href="https://observablehq.com/@jashkenas/my-neat-notebook">entire notebook</a> as-is.</p>
 <script type="module">
 
-<iframe width="100%" height="500" frameborder="0"
-  src="https://observablehq.com/embed/0dffe2068043ebc3?cell=*"></iframe>
+<div id="observablehq-bar-760422f8"></div>
+<p>Credit: <a href="https://observablehq.com/@observablehq/guide-athletes@58">Exploring Olympic athletes data by Observable</a></p>
+
+<script type="module">
+import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+import define from "https://api.observablehq.com/d/efdda41a952b5c44@58.js?v=3";
+new Runtime().module(define, name => {
+  if (name === "bar") return new Inspector(document.querySelector("#observablehq-bar-760422f8"));
+});
 
 </script>
