@@ -1,84 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>This is the title of my webpage</title>
+	<title>Scrollytelling - Complex</title>
 
-  <script src="https://unpkg.com/intersection-observer"></script>
-  <script src="https://unpkg.com/scrollama"></script>
+	<script src="https://unpkg.com/intersection-observer"></script>
+	<script src="https://unpkg.com/scrollama"></script>
 
-    <style type="text/css">
-      html,body{
-        width: 100%;
-        height: 100%;
-        font-family: sans-serif;
-        color: #555;
-        background-color: #fff;
-        font-size: 1.4em;
-      }
-
-      section{
-        height: 100%;
-      }
-
-      div{
-        height: 100%;
-        max-width: 1000px;
-        margin: 50px;
-        text-align: center;
-        padding: 50px;
-      }
-
-      div.step{
-        background: #fff;
-        color: #fff;
-      }
-      div.step.active{
-        background: #FF9900;
-        transition: 1s linear all;
-      }
-      div.step.blue{
-        background: blue;
-        transition: 1s linear all;
-      }
-      div.step.inactive{
-        background: #fff;
-        transition: 1s linear all;
-      }
-    </style>
+	<style type="text/css">
+		html,body{
+			width: 100%;
+			height: 100%;
+			font-family: sans-serif;
+			color: #555;
+			background-color: #fff;
+			font-size: 1.4em;
+		}
+		section{
+			max-width: 1000px;
+			margin: 20% auto;
+		}
+		section:not(:first-of-type){
+			max-width: 1000px;
+			margin: 50% auto;
+		}
+		section div{
+			display: inline-block;
+			padding: 50px;
+			margin-bottom: 100%;
+		}
+		section div.steps{
+			max-width: 500px;
+		}
+		section div.visual{
+			float: right;
+			position: -webkit-sticky;
+			position: sticky;
+			top: 0;
+		}
+	</style>
 </head>
-<body>  
-  <section>
-    <div><h1>Webpage Name</h1></div>
-    <div class="step"><p>Chart 1</p></div>
-    <div class="step blue"><p>Chart 2</p></div>
-    <div class="step"><p>Chart 3</p></div>
-  </section>
-  
-  <script type="text/javascript">
-    const scroller = scrollama();
+<body>
+	<section><h2>A More Complex Scrollytelling Experience</h2></section>
+	<section>
+		<div class="visual">
+			<svg width=200 height=200>
+				<rect id="rectObj" width=200 height=200 x=0 y=0 fill="#ddd">
+			</svg>
+		</div>
+		<div class="steps">
+			<div class="step" data-color="#ddd">
+        <h3>Chart 1</h3>
+        <p>Here are some words.</p>
+      </div>
+			<div class="step" data-color="blue">
+        <h3>Chart 2</h3>
+        <p>Here are some words.</p>
+      </div>
+			<div class="step" data-color="#FF9900">
+        <h3>Chart 2</h3>
+        <p>Here are some words.</p>
+      </div>
+		</div>
+	</section>
+	<section>
+		<div class="steps">
+			<div>The End.</div>
+		</div>
+	</section>
 
-    scroller
-      .setup({
-        step: '.step',
-        debug: false,
-        offset: 0.5,
-        progress: false,
-        once: false,
-        threshold: 4,
-      })
-      .onStepEnter((response) => {
-        console.log(response)
-        response.element.classList.remove('inactive');
-        response.element.classList.add('active');
-      })
-    .onStepExit((response) => {
-      console.log(response)
-      response.element.classList.remove('active');
-      response.element.classList.add('inactive');
-    });
+	<script type="text/javascript">
+		const scroller = scrollama();
 
-    window.addEventListener('resize', scroller.resize);
-  </script>
+		scroller
+			.setup({
+				step: ".step"
+			})
+			.onStepEnter((response) => {
+				console.log(response);
+				document.getElementById('rectObj').setAttribute('fill', response.element.dataset.color);
+			});
 
+		window.addEventListener("resize", scroller.resize);
+	</script>
 </body>
 </html>
